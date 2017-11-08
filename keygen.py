@@ -22,11 +22,11 @@ def genE(orderN):
             return e
 
 def genPublic(bits):
-    p = number.getPrime(int(bits/2))
-    q = number.getPrime(int(bits/2))
+    p = number.getPrime(bits // 2)
+    q = number.getPrime(bits // 2)
     N = p*q
     while (N.bit_length() != bits):
-        q = number.getPrime(int(bits/2))
+        q = number.getPrime(bits // 2 + 1)
         N = p*q
     
     orderN = (p-1)*(q-1)

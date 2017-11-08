@@ -41,7 +41,17 @@ def getKey():
 Reads input in from the file provided via command line arguments
 @return: returns the byte string
 '''
+def getKey():
+    with open(args.key_file, "r") as f:
+        three_lines = f.read()
+
+    split = three_lines.splitlines()
+    nbits = split[0]
+    n = split[1]
+    key = split[2]
+    return nbits, n, key
+
 def getInput():
     with open(args.input_file, "r") as f:
         s = f.read()
-        return s
+        return s.splitlines()[0]
