@@ -19,7 +19,7 @@ def dec(nbits, n, key, m):
 
     if (m_dec[:2] != b'\x00\x02'): #ensures the first two bytes of padding are correct
         print("ERROR: Expected", b'\x00\x02', "as first two bytes", file=sys.stderr)
-        print("Received", m_dec[:2], "instead. Make sure bit size of N is a multiple of 8", file=sys.stderr)
+        print("Received", m_dec[:2], "instead. Make sure bit size of N is a multiple of 8 and m is in Z*_n", file=sys.stderr)
         exit(1)
     
     strip_amount = 3 + (nbits//2//8)
