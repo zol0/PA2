@@ -1,9 +1,18 @@
+'''
+Karnauch, Andrey
+CS483 - rsa_enc.py
+Encrypts an element (base10 integer) in Z*_n using RSA PKCS1.5
+'''
 from source.cs483 import rsaIO
 import random
-import math
 import sys
 import os
 
+'''
+Generates random non-zero bits for padding in RSA PKCS1.5
+@param r: an integer indicating the number of padding BITS needed
+@return: a byte string consisting of the BYTE amount requested
+'''
 def genRandom(r):
     rbytes = r // 8
     padr = b''
@@ -15,6 +24,13 @@ def genRandom(r):
 
     return padr
 
+'''
+Pads the message before encryption using PKCS1.5 standards
+@param n, nbits: the public key N and its bit size
+@param m: the plain base10 integer message to encrypt
+@return: a byte string ready to be encrypted using RSA PKCS1.5
+NOTE: some bits may be lost during the process, but byte length is retained
+'''
 def pad(m, nbits, n):
     r = nbits // 2
     max_length = r - 24
@@ -37,30 +53,26 @@ def pad(m, nbits, n):
     num_zeros = need // 8
 
     zero_string = bytearray(num_zeros)
-    print("Created zero string ", zero_string)
 
     padding = genRandom(r)
     return b'\x00' + b'\x02' + padding + b'\x00'+ zero_string + m.to_bytes(mbytes+1, sys.byteorder)
 
+'''
+Encrypts an element (base10 integer) in Z*_n using RSA PKCS1.5
+@param n, nbits: the public key N and its bit size
+@param m, key: the base10 int to be encrypted and the public key e
+@return: the m with appropriate padding, raised to the e -- m^e
+'''
 def enc(nbits, n, key, m):
     rv = pad(m, nbits, n)
-    print("Returned", rv)
-    print("RV length", len(rv))
     m_int = int.from_bytes(rv, sys.byteorder)
-    print("M as an int is", m_int)
-    print("Bit length is", m_int.bit_length())
     m_enc = pow(m_int, key, n)
-    print("M raised to", key, "is", m_enc)
     return m_enc
 
 
 if __name__ == "__main__":
     m = rsaIO.getInput()
     nbits, n, key = rsaIO.getKey()
-#    print(m)
-#    print("nbits = ", nbits)
-#    print("n = ", n)
-#    print("key = ", key)
 
     m_enc = enc(int(nbits), int(n), int(key), int(m))
 
