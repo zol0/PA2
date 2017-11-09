@@ -66,5 +66,3 @@ if __name__ == "__main__":
 
     with open(rsaIO.args.output_file, "w") as w:
         w.write(str(m_enc))
-
-
