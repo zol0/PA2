@@ -3,7 +3,7 @@ Karnauch, Andrey
 CS483 - rsa_dec.py
 Decrypt a base10 integer that was encrypted using RSA PKCS1.5
 '''
-from source.cs483 import rsaIO
+from cs483 import rsaIO
 import sys
 
 '''

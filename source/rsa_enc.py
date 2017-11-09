@@ -3,7 +3,7 @@ Karnauch, Andrey
 CS483 - rsa_enc.py
 Encrypts an element (base10 integer) in Z*_n using RSA PKCS1.5
 '''
-from source.cs483 import rsaIO
+from cs483 import rsaIO
 import random
 import sys
 import os

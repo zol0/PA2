@@ -1,5 +1,4 @@
 all:
-	chmod 755 cbc-enc
-	chmod 755 cbc-dec
-	chmod 755 ctr-enc
-	chmod 755 ctr-dec
+	chmod 755 rsa-enc
+	chmoe 755 rsa-dec
+	chmod 755 rsa-keygen

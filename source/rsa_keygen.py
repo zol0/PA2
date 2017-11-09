@@ -3,7 +3,7 @@ Karnauch, Andrey
 CS483 - rsa_keygen.py
 Generates a public/private key pair for RSA
 '''
-from source.cs483 import kgIO
+from cs483 import kgIO
 from Crypto.Util import number
 from math import gcd
 import math
@@ -44,7 +44,7 @@ def genE(orderN):
 '''
 Generates a public/private key pair for RSA
 @param bits: The desired BIT size of N where N = pq and p,q are large primes
-@return: The obtained N, public key used for encryption e, and private key d
+@return: The obtained N, public key used for encryption e, and private key d for decryption
 '''
 def genKeys(bits):
     p = number.getPrime(bits // 2)
