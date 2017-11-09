@@ -1,7 +1,7 @@
 '''
 Karnauch, Andrey
 CS483 - IO module
-Processes input arguments using argparse for key-gen.py
+Processes input arguments using argparse for rsa_keygen.py
 '''
 
 import sys

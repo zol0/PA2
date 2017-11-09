@@ -1,7 +1,7 @@
 '''
 Karnauch, Andrey
 CS483 - IO module
-Processes input arguments using argparse
+Processes input arguments using argparse for rsa_enc.py and rsa_dec.py
 '''
 
 import sys
@@ -28,19 +28,6 @@ elif (args.output_file == None):
     print("Rerun using '-h' for help", file=sys.stderr)
     sys.exit()
 
-'''
-Reads key in from the file provided via command line arguments
-@return: returns the hex encoded string as a byte string
-def getKey():
-    with open(args.key_file, "rb") as k:
-        key = k.read()
-        key = binascii.unhexlify(key)
-        return key
-'''
-'''
-Reads input in from the file provided via command line arguments
-@return: returns the byte string
-'''
 def getKey():
     with open(args.key_file, "r") as f:
         three_lines = f.read()
